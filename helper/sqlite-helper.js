@@ -1,27 +1,5 @@
 const { query, executeSQL } = require('../config/sqlite');
 
-// async function select(tableName, conditions = {}) {
-//     try {
-//       let queryStr = `SELECT * FROM ${tableName}`;
-//       let valuesForWhereClause = [];
-  
-//       if (Object.keys(conditions).length > 0) {
-//         const whereClause = Object.keys(conditions)
-//           .map(key => `${key} = ?`)
-//           .join(' AND ');
-//         valuesForWhereClause = Object.values(conditions);
-//         queryStr += ` WHERE ${whereClause}`;
-//         queryStr += ' LIMIT 1000'
-//       }
-  
-//       const rows = await query(queryStr, valuesForWhereClause);
-      
-//       return rows;
-//     } catch (error) {
-//       throw new Error(`Error selecting from database: ${error.message}`);
-//     }
-// }
-
 async function select(tableName, conditions = {}) {
     try {
       let queryStr = `SELECT * FROM ${tableName}`;
