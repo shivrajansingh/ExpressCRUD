@@ -1,4 +1,3 @@
-```
 # ExpressCRUD
 
 ExpressCRUD is a lightweight Node.js project using Express.js and SQLite for seamless CRUD (Create, Read, Update, Delete) operations.
