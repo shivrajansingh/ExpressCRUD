@@ -1,4 +1,4 @@
-const { query } = require('../config/sqlite');
+const { query, executeSQL } = require('../config/sqlite');
 
 // async function select(tableName, conditions = {}) {
 //     try {
@@ -209,5 +209,7 @@ async function createTable(tableName, columns) {
     console.error(`Error creating table '${tableName}':`, error);
   }
 }
+
+
 
 module.exports = { select, insert, update, remove, createTable, selectWithPagination, count };

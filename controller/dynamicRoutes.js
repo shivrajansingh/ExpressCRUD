@@ -1,13 +1,28 @@
 const express = require('express');
 const db = express.Router();
 const { select, insert, update, remove, createTable, selectWithPagination, count } = require("../helper/sqlite-helper");
-
+const { executeSQL } = require("../config/sqlite")
 
 db.post('/create-table', async (req, res) => {
     try {
       const { tableName, columns } = req.body;
       await createTable(tableName, columns);
       res.json({ message: `Table '${tableName}' created successfully` });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+});
+
+db.post('/sql', async (req, res) => {
+    try {
+      const { sql } = req.body;
+  
+      if (!sql) {
+        return res.status(400).json({ error: 'SQL statement is required' });
+      }
+  
+      const result = await executeSQL(sql);
+      res.json(result);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }

@@ -13,4 +13,16 @@ function query(sql, args) {
   });
 }
 
-module.exports = { query };
+async function executeSQL(sql) {
+    return new Promise((resolve, reject) => {
+      db.all(sql, (err, rows) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(rows);
+        }
+      });
+    });
+  }
+
+module.exports = { query, executeSQL };
