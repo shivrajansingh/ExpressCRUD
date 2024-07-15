@@ -7,7 +7,7 @@ db.post('/create-table', async (req, res) => {
     try {
       const { tableName, columns } = req.body;
       await createTable(tableName, columns);
-      res.json({ message: `Table '${tableName}' created successfully` });
+      res.json({ message: `Table '${tableName}' created successfully` }); 
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
